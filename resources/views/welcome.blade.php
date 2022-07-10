@@ -138,9 +138,9 @@
 
                     </div>
                     <div class="col col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                            @if($listItem->isComplete = 1)
+                            @if($listItem->isComplete = false)
                                 {{ 'Is complete' }}
-                            @else {{ 'Pending' }}
+                                @else {{ 'Pending' }}
                             @endif
                     </div>
                 </div>

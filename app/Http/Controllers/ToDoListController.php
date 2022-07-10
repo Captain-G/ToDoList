@@ -30,7 +30,6 @@ class ToDoListController extends Controller
     public function isComplete($id){
         $listItem = ListItem::find($id);
         $listItem->isComplete = true;
-        $listItem->isComplete = 'Complete';
         $listItem->save();
         return view('welcome', ['listItems' => ListItem::all()]);
     }
