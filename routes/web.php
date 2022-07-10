@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ToDoListController::class, 'index']);
 Route::post('/saveItem',[ToDoListController::class, 'saveItem'])->name('saveItem');
 Route::post('/isComplete/{id}', [ToDoListController::class, 'isComplete'])->name('isComplete');
+Route::post('/status/{id}', [ToDoListController::class, 'status'])->name('status');

@@ -33,4 +33,11 @@ class ToDoListController extends Controller
         $listItem->save();
         return view('welcome', ['listItems' => ListItem::all()]);
     }
+
+    public function status($id){
+        $listItem = ListItem::find($id);
+        $listItem->status = 1;
+        $listItem->save();
+        return view('welcome', ['listItems' => ListItem::all()]);
+    }
 }

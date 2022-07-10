@@ -59,6 +59,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
+
 {{--                <table class="table" style="margin: 15px">--}}
 {{--                    <thead class="thead-dark">--}}
 {{--                    <tr>--}}
@@ -106,7 +107,7 @@
 {{--                    </tbody>--}}
 {{--                </table>--}}
 
-            <div class="row" style="background-color: #1a202c; color: #e2e8f0; height: 30px;margin-top: 20px; font-size: larger;margin-bottom: 10px">
+            <div class="row" style="background-color: #1a202c; color: #e2e8f0; height: 30px;font-size: larger;margin: 20px 0 10px;">
                 <div class="col col-sm-2 col-md-2 col-lg-2 col-xl-2">
                     NAME
                 </div>
@@ -130,18 +131,32 @@
                     </div>
                     <div class="col col-sm-4 col-md-4 col-lg-4 col-xl-4" style="display: flex; max-height: 30px">
                         <button type="button" class="btn btn-outline-danger btn-sm" style="margin-left: 10px">Delete</button>
-                        <button type="button" class="btn btn-outline-dark btn-sm" style="margin-left: 10px">Overdue</button>
+
+                        <form method="post" action=" {{ route('status', $listItem->id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-dark btn-sm" style="margin-left: 10px">Overdue</button>
+                        </form>
+
                         <button type="button" class="btn btn-outline-secondary btn-sm" style="margin-left: 10px">Edit</button>
+
                         <form method="post" action="{{ route('isComplete', $listItem->id) }}">@csrf
                         <button type="submit" class="btn btn-outline-info btn-sm" style="margin-left: 10px">Mark as Complete</button>
                         </form>
-
                     </div>
                     <div class="col col-sm-2 col-md-2 col-lg-2 col-xl-2">
                             @if($listItem->isComplete == true)
-                                {{ 'Complete' }}
-                                @else {{ 'Pending' }}
+                                {{ 'Completed' }}
+                        @else    @if($listItem->status == 1 and $listItem->isComplete == true)
+                            {{ 'Completed late' }}
+                        @endif
                             @endif
+                            @if($listItem->status == 0 and $listItem->isComplete == false)
+                                {{ 'Pending' }}
+                            @endif
+                            @if($listItem->status == 1 and $listItem->isComplete == false)
+                                {{ 'Overdue' }}
+                            @endif
+
                     </div>
                 </div>
                     <hr>
