@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ToDoListController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', [ToDoListController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::post('/saveItem',[ToDoListController::class, 'saveItem'])->name('saveItem');
 Route::post('/isComplete/{id}', [ToDoListController::class, 'isComplete'])->name('isComplete');
 Route::post('/status/{id}', [ToDoListController::class, 'status'])->name('status');
+Route::post('/delete/{id}', [ToDoListController::class, 'delete'])->name('delete');
+Route::post('/edit/{id}', [ToDoListController::class, 'edit'])->name('edit');

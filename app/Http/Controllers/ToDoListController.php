@@ -11,8 +11,6 @@ class ToDoListController extends Controller
         return view('welcome', ['listItems' => ListItem::all()]);
     }
 
-
-
     public function saveItem(Request $request){
         $request->validate([
             'name' => 'max:20|required',
@@ -38,6 +36,21 @@ class ToDoListController extends Controller
         $listItem = ListItem::find($id);
         $listItem->status = 1;
         $listItem->save();
+        return view('welcome', ['listItems' => ListItem::all()]);
+    }
+//    deleting records
+    public function delete($id){
+        $listItem = ListItem::find($id);
+        $listItem->delete();
+        return view('welcome', ['listItems' => ListItem::all()]);
+    }
+//    edit records
+    public function edit(Request $request, $id){
+        $newListItem = ListItem::find($id);
+//        $newListItem->update(['name' => $request->updatedName, 'description' => $request->updatedDesc]);
+        $newListItem->name = $request->input('name');
+        $newListItem->description = $request->input('description');
+        $newListItem->update();
         return view('welcome', ['listItems' => ListItem::all()]);
     }
 }
