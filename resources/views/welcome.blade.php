@@ -510,11 +510,9 @@
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="reset" class="btn btn-danger btn-sm">Cancel</button>
+                                                <button type="reset" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
 
-                                                <button type="submit" class="btn btn-primary btn-sm"
-                                                        style="margin-left: 10px">Update
-                                                </button>
+                                                <button type="submit" class="btn btn-primary btn-sm" style="margin-left: 10px">Update </button>
 
                                             </div>
                                         </form>
