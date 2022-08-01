@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ToDoListController;
+use App\Models\ListItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,4 @@ Route::post('/isComplete/{id}', [ToDoListController::class, 'isComplete'])->name
 Route::post('/status/{id}', [ToDoListController::class, 'status'])->name('status');
 Route::post('/delete/{id}', [ToDoListController::class, 'delete'])->name('delete');
 Route::post('/edit/{id}', [ToDoListController::class, 'edit'])->name('edit');
+//Route::any('/search',[ToDoListController::class, 'search'])->name('search');

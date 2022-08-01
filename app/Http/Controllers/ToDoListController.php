@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ListItem;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class ToDoListController extends Controller
 {
@@ -44,6 +45,7 @@ class ToDoListController extends Controller
         $listItem->delete();
         return view('welcome', ['listItems' => ListItem::all()]);
     }
+
 //    edit records
     public function edit(Request $request, $id){
         $newListItem = ListItem::find($id);
@@ -53,4 +55,19 @@ class ToDoListController extends Controller
         $newListItem->update();
         return view('welcome', ['listItems' => ListItem::all()]);
     }
+//    public function search(){
+//        $q = (ListItem::get('q'));
+//        if($q != ''){
+//            $data =ListItem::where('name','like','%'.$q.'%')->orWhere('email','like','%'.$q.'%')->paginate(5)->setpath('');
+//            $data->appends(array(
+//                'q' => Input::get('q'),
+//            ));
+//            if(count($data)>0){
+//                return view('welcome')->withData($data);
+//            }
+//            return view('welcome')->withMessage("No Results Found!");
+//        }
+//    }
+
 }
+

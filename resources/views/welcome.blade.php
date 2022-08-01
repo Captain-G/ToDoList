@@ -402,8 +402,18 @@
         }
     </style>
 </head>
-<body class="antialiased" style="margin: 15px">
+<body class="antialiased" style="margin: 0 15px 15px;">
 <div class="relative items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+    <div style="display: flex">
+        <h2 style="font-family: Garamond,serif">TO-DO-LIST</h2>
+
+        <form action="" method="post" role="search"  style="position:absolute; right: 150px; margin-bottom: 10px">
+            <input class="form-control-sm mr-xs-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 btn-sm" type="submit" name="search">Search</button>
+        </form>
+
+    </div>
+
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
@@ -425,7 +435,7 @@
             </ul>
         </div>
     @endif
-    <form method="post" action="{{ route('saveItem') }}">
+    <form method="post" action="{{ route('saveItem') }}" >
         @csrf
         <div class="form-group">
             <label for="addItem">Add Item :</label>
@@ -486,7 +496,6 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-
 
                             <div class="modal fade" id="myModal{{$listItem->id}}">
                                 <div class="modal-dialog modal-sm">
